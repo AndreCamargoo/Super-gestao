@@ -8,7 +8,9 @@ class ContatoController extends Controller
 {
     public function principal() {
         
-        return view('site.contato');
+        return view('site.contato', [
+            'title' => 'Contato'
+        ]);
 
     }
 }

@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 //Controller
 Route::get('/', 'PrincipalController@principal')->name('site.index');
-Route::get('/sobre', 'SobreNosController@principal')->name('site.sobre');
+Route::get('/sobre', 'SobreNosController@principal')->name('site.sobrenos');
+
 Route::get('/contato', 'ContatoController@principal')->name('site.contato');
+Route::post('/contato', 'ContatoController@principal')->name('site.contato');
+
 Route::get('/login', function() { return 'Login'; })->name('site.login');
 
 //Validando parâmetros
