@@ -6,20 +6,27 @@
 
     <div class="conteudo-pagina">
         <div class="titulo-pagina">
-            <h1>Entre em contato conosco</h1>
+            <h1>Login</h1>
         </div>
 
         <div class="informacao-pagina">
-            <div class="contato-principal">
-                @component('site.layouts._components.form_contato', [
-                    'classe' => 'borda-preta',
-                    'motivo_contatos' => $motivo_contatos
-                ])
-                    {{-- Enviar complementos HTML --}}
-                    <p>A nossa equipe analisará a sua mensagem e retornaremos o mais breve possível</p>
-                    <p>Nosso tempo médio de resposta é de 48 horas.</p>
-                @endcomponent
+
+            <div style="width: 30%; margin-left: auto; margin-right: auto">
+                <form action="{{ route('site.login') }}" method="POST">
+                    @csrf
+                    <input type="text" name="usuario" value="{{ old('usuario') }}" id="usuario" placeholder="Usuário" class="borda-preta" />
+                        {{ $errors->has('usuario') ? $errors->first('usuario') : '' }}
+                    <br>
+                    <input type="password" name="senha" value="{{ old('senha') }}" id="senha" placeholder="Senha" class="borda-preta" />
+                        {{ $errors->has('senha') ? $errors->first('senha') : '' }}
+                    <br>
+                    <button type="submit" class="borda-preta">Acessar</button>
+                </form>
+
+                {{ isset($erro) ? $erro : '' }}
+
             </div>
+           
         </div>  
     </div>
 
